@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <title>EGS Shopping Application</title>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">EGS Shopping Application</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+        </ul>
+
+        <div sec:authorize="isAnonymous()" class="form-inline my-2 my-lg-0">
+            <a class="btn btn-outline-success my-2 mr-2 my-sm-0" th:href="@{/login}">Login</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row py-2">
+        <div class="col-12">
+            <form th:action="@{/products/review}" method="post" th:object="${productReview}">
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <input type="text" id="comment" th:field="*{comment}" class="form-control" placeholder="Comment">
+                    <small class="form-text text-danger" th:each="err : ${#fields.errors('comment')}" th:text="${err}">Validation
+                        error</small>
+                </div>
+                <div class="form-group">
+                    <label for="rate">Rate</label>
+                    <select name="rate" id="rate" th:field="*{rate}" class="form-control" placeholder="Rate">
+                        <option value=5>5</option>
+                        <option value=4>4</option>
+                        <option value=3>3</option>
+                        <option value=2>2</option>
+                        <option value=1>1</option>
+                    </select>
+                    <div class="form-group">
+                        <label for="user">User</label>
+                        <input type="text" id="user" th:field="*{user}" th:value="*{user.email}" class="form-control" placeholder="User"
+                               readonly>
+                    </div>
+                    <div class="form-group">
+                        <label for="product">Product</label>
+                        <input type="text" id="product" th:field="*{product}" th:value="*{product.name}" readonly class="form-control"
+                               placeholder="Product">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Review</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
