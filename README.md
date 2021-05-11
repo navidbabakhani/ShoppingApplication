@@ -31,7 +31,7 @@ The following guides illustrate how to use some features concretely:
 ### Features
 * User login/sign-up
 * 2 roles: ADMIN and USER
-* ADMIN can have CRUD on products and users
+* ADMIN can have CRUD on products, categories, and users
 * ADMIN can block/unblock users
 * USER can see just products
 * USER cannot delete or add products
@@ -41,7 +41,7 @@ The following guides illustrate how to use some features concretely:
 First, create a postgreSql database using this command:
 `createdb -h localhost -p 5432 -U postgres shoppingdb`
 
-in `application.properties` file, search for `spring.jpa.hibernate.ddl-auto` and set it to create-drop for initializing application.
+in `application.properties` file, search for `spring.jpa.hibernate.ddl-auto` and set it to `create-drop` or `update` for initializing application.
 For the production environment, this line should be set to `validate`
 
 ### Tests
@@ -49,6 +49,9 @@ A few unit tests to show you my ability to write spring unit tests
 
 ### How to use
 After running the application, you can browse `localhost:8080`
+
+The default ADMIN account for initial use and define other products/categories/users is:
+`user: admin pass: 123`
 
 There are several urls for searching products which are accessible by USER role:
 
