@@ -29,13 +29,13 @@ public class ProductController {
 //        logger.info("User name: {}", principal.getName());
 
         model.addAttribute("product", new Product());
-        return "/create-product";
+        return "create-product";
     }
 
     @PostMapping("/products/add")
     public String addProduct(@Valid @ModelAttribute("product") Product product, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/create-product";
+            return "create-product";
         }
 
         try {
@@ -131,7 +131,7 @@ public class ProductController {
         productReview.setProduct(product);
 
         model.addAttribute("productReview", productReview);
-        return "/create-review";
+        return "create-review";
     }
 
 

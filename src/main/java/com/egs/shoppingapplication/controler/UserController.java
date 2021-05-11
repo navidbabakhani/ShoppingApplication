@@ -25,13 +25,13 @@ public class UserController {
 //        logger.info("User name: {}", principal.getName());
 
         model.addAttribute("user", new User());
-        return "/create-user";
+        return "create-user";
     }
 
     @PostMapping("/users/add")
     public String addUser(@Valid @ModelAttribute("user") User user, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            return "/create-user";
+            return "create-user";
         }
 
         try {
