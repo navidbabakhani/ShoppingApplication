@@ -61,3 +61,6 @@ There are several urls for searching products which are accessible by USER role:
 * products/searchbyprice/min/{min}
 * products/searchbyprice/max/{max}
 * products/searchbyprice/min/{min}/max/(max)
+
+#### Preview:
+[My App on heroku](https://shopping-app-egs.herokuapp.com)
